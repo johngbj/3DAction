@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
     bool isWalk;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,16 @@ public class PlayerController : MonoBehaviour
         Move();
         Rotation();
         playerCamera.transform.position = transform.position;
+
+        // Transform‚Ìrotation‚ğæ“¾
+        Quaternion rotation = transform.rotation;
+
+        // x‚Ì’l‚ğƒ[ƒ‚Éİ’è
+        rotation = Quaternion.Euler(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
+
+        // Transform‚Ìrotation‚ğXV
+        transform.rotation = rotation;
+
 
     }
 
@@ -64,6 +76,7 @@ public class PlayerController : MonoBehaviour
             speed.z = playerSpeed;
             transform.eulerAngles = playerCamera.transform.eulerAngles + rotation;
             isWalk = true;
+
         }
 
 
